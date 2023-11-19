@@ -13,7 +13,8 @@ model = BertForSequenceClassification.from_pretrained(model_name, num_labels=1)
 dataset = load_dataset("md_gender_bias", name="convai2_inferred")
 
 # Access the train, validation, and test splits
-train_data = dataset["train"]
+train_data = Dataset.from_dict(dataset["train"][0:5000])
+
 validation_data = dataset["validation"]
 test_data = dataset["test"]
 
@@ -27,6 +28,7 @@ def process_dataset(dataset):
     }
     new_dataset = Dataset.from_dict(new_dataset_dict)
     return new_dataset
+
 
 training_args = TrainingArguments(
     output_dir='./output',
