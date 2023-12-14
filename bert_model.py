@@ -40,13 +40,15 @@ training_args = TrainingArguments(
 )
 
 processed_train_dataset = process_dataset(train_data)
+processed_validation_dataset = process_dataset(validation_data)
 tokenized_train_datasets = processed_train_dataset.map(tokenize_function, batched=True)
+tokenized_validation_datasets = processed_validation_dataset.map(tokenize_function, batched=True)
 
 trainer = Trainer(
     model=model,
     args=training_args,
     train_dataset=tokenized_train_datasets,
-    # eval_dataset=tokenized_train_datasets["validation"],
+    eval_dataset=tokenized_validation_datasets,
     tokenizer=tokenizer,
     compute_metrics=None,  # Replace with your metric function for regression if needed
 )
