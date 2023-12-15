@@ -9,12 +9,12 @@ def classify(logit: float):
 def map2np(obj):
     return np.array(list(obj))
 
-with open("label_gold.txt", 'r') as fp_label:
+with open("label.txt", 'r') as fp_label:
     all_labels = fp_label.read().split('\n')
     all_labels = [float(i) for i in all_labels if i!=""]
     all_labels = np.array(all_labels)
 
-with open("pred_gold.txt", 'r') as fp_pred:
+with open("pred.txt", 'r') as fp_pred:
     all_preds = fp_pred.read().split('\n')
     all_preds = [float(i) for i in all_preds if i!=""]
     all_preds = np.array(all_preds)
