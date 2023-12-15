@@ -28,7 +28,7 @@ The code to run a single test point on baseline model
 
 
 
-### 485project.ipynb
+### 487project.ipynb
 
 The actual code that runs on google colab to train the full model, get the prediction on test set (and export)
 
